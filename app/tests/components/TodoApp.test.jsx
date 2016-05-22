@@ -30,9 +30,8 @@ describe('TodoApp', () => {
 		var todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
 		todoApp.setState({todos: [todoData]});
 		
-		var firstTodo = todoApp.state.todos[0];
-		expect(firstTodo.completed).toBe(false);
+		expect(todoApp.state.todos[0].completed).toBe(false);
 		todoApp.handleToggle(11);
-		expect(firstTodo.completed).toBe(true);
+		expect(todoApp.state.todos[0].completed).toBe(true);
 	});
 });
