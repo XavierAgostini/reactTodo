@@ -28,4 +28,22 @@ describe('Todo', () => {
 			id: todoData.id
 		});
 	});
+
+	it('Should dispatch deleteTodo action on deleted button click', () => {
+		var todoData = {
+			id: 100,
+			text: 'Test',
+			completed: true
+		};
+		var spy = expect.createSpy();
+		var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>)
+		var $el = $(ReactDOM.findDOMNode(todo));
+		// console.log('$el', $el[0	]);
+		
+		// TestUtils.Simulate.click($el[0], $('button.del-btn'));
+		// expect(spy).toHaveBeenCalledWith({
+		// 	type: 'DELETE_TODO',
+		// 	id: todoData.id
+		// });
+	})
 });

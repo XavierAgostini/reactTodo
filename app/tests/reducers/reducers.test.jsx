@@ -71,5 +71,33 @@ describe('Reducers', () => {
 			expect(res.length).toEqual(1);
 			expect(res[0]).toEqual(todos[0]);
 		});
+
+		it('Should delete selected todo', () => {
+			var todos = [{
+				id: '1',
+				text: 'anything',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000
+			}, {
+				id: '2',
+				text: 'test2',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000
+			}, {
+				id: '3',
+				text: 'test3',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000
+			}];
+			var action = {
+				type: 'DELETE_TODO',
+				id: '1'
+			}
+			var res = reducers.todosReducer(todos, df(action));
+			expect(res[0].id).toEqual('2');
+		});
 	});
 });

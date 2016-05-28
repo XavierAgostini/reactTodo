@@ -44,13 +44,43 @@ describe('Actions', () => {
 		var res = actions.addTodos(todos);
 
 		expect(res).toEqual(action);
-	})
+	});
+
 	it('Should generate toggleTodo action', () => {
 		var action = {
 			type: 'TOGGLE_TODO',
 			id: 1
 		};
 		var res = actions.toggleTodo(action.id);
+		expect(res).toEqual(action);
+	});
+	
+	it('Should generate deleteTodo action', () => {
+		var todos = [{
+			id: '1',
+			text: 'anything',
+			completed: false,
+			completedAt: undefined,
+			createdAt: 33000
+		}, {
+			id: '2',
+			text: 'test2',
+			completed: false,
+			completedAt: undefined,
+			createdAt: 33000
+		}, {
+			id: '3',
+			text: 'test3',
+			completed: false,
+			completedAt: undefined,
+			createdAt: 33000
+		}];
+
+		var action = {
+			type: 'DELETE_TODO',
+			id: 1
+		};
+		var res = actions.deleteTodo(action.id);
 		expect(res).toEqual(action);
 	});
 });

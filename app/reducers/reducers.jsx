@@ -52,7 +52,11 @@ export var todosReducer = (state = [], action) => {
 				...action.todos
 			];
 		case 'DELETE_TODO':
-			state.splice(action.id, 1);
+			state.map((todo) => {
+				if (todo.id === action.id) {
+					state.splice(state.indexOf(todo), 1);
+				} 
+			});
 			return state;
 		default:
 			return state;
