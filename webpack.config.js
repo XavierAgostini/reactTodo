@@ -17,8 +17,8 @@ module.exports = {
 		})		
 	],
 	output: {
-		path: __dirname,
-		filename: './public/bundle.js'
+		path: __dirname + '/public/dist/',
+		filename: 'bundle.js'
 	},
 	resolve: {
 		root: __dirname,
@@ -28,7 +28,7 @@ module.exports = {
 			'./app/api'
 		],
 		alias: {
-			applicationStyles: 'app/styles/app.scss',
+			applicationStyles: 'app/styles/loadFoundatoin.scss',
 			actions: 'app/actions/actions.jsx',
 			reducers: 'app/reducers/reducers.jsx',
 			configureStore: 'app/store/configureStore.jsx'

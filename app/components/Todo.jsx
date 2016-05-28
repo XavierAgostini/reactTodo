@@ -30,6 +30,11 @@ export var Todo = React.createClass({
             		<p>{text}</p>
             		<p className="todo_subtext">{renderDate()}</p>
             	</div>
+                <div>
+                    <button className="button alert del-btn" onClick={()=> {
+                        dispatch(actions.deleteTodo(id))
+                    }}>X</button>
+                </div>
             </div>
         );
     }

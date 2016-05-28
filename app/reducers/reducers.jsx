@@ -51,6 +51,9 @@ export var todosReducer = (state = [], action) => {
 				...state,
 				...action.todos
 			];
+		case 'DELETE_TODO':
+			state.splice(action.id, 1);
+			return state;
 		default:
 			return state;
 	}

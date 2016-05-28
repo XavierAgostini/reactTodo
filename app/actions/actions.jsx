@@ -31,3 +31,10 @@ export var toggleTodo = (id) => {
 		id
 	};
 };
+
+export var deleteTodo = (id) => {
+	return {
+		type: 'DELETE_TODO',
+		id
+	};
+};
