@@ -15,12 +15,12 @@ store.subscribe(() => {
 	TodoAPI.setTodos(state.todos);
 });
 
-// var initialTodos = {text: 'hi'};//TodoAPI.getTodos();
+var initialTodos = TodoAPI.getTodos();
 store.dispatch(actions.toggleShowCompleted());
 // store.dispatch(actions.addTodos())
-store.dispatch(actions.addTodo('hi'));
-store.dispatch(actions.addTodo('salut'));
-store.dispatch(actions.addTodo('test'));
+// store.dispatch(actions.addTodo('hi'));
+// store.dispatch(actions.addTodo('salut'));
+// store.dispatch(actions.addTodo('test'));
 // Load foundation
 $(document).foundation();
 

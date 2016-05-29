@@ -17,6 +17,7 @@ var TodoApp = React.createClass({
 							<TodoSearch/>
 							<TodoList/>
 							<AddTodo/>
+							
 						</div>
 					</div>
 				</div>
