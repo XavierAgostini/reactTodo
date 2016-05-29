@@ -38,7 +38,7 @@ export var Todo = React.createClass({
                     e.preventDefault();
                     var editedText = this.refs.editText.value;
                     dispatch(actions.editTodo(id, editedText));
-                }}><input type="text" ref="editText" placeholder={text} onBlur={()=> {
+                }}><input type="text" ref="editText" defaultValue={text} onBlur={()=> {
                     dispatch(actions.editTodo(id, ''));
                 }}  id="testInput" autofocus />
                 </form>
