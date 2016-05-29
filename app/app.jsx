@@ -17,7 +17,7 @@ store.subscribe(() => {
 
 var initialTodos = TodoAPI.getTodos();
 store.dispatch(actions.toggleShowCompleted());
-// store.dispatch(actions.addTodos())
+store.dispatch(actions.addTodos(initialTodos));
 // store.dispatch(actions.addTodo('hi'));
 // store.dispatch(actions.addTodo('salut'));
 // store.dispatch(actions.addTodo('test'));
