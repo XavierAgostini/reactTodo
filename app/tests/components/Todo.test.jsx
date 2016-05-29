@@ -38,12 +38,12 @@ describe('Todo', () => {
 		var spy = expect.createSpy();
 		var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>)
 		var $el = $(ReactDOM.findDOMNode(todo));
-		// console.log('$el', $el[0	]);
 		
-		// TestUtils.Simulate.click($el[0], $('button.del-btn'));
-		// expect(spy).toHaveBeenCalledWith({
-		// 	type: 'DELETE_TODO',
-		// 	id: todoData.id
-		// });
+		expect(todo.refs.delBtn).toExist();
+		TestUtils.Simulate.click(todo.refs.delBtn);
+		expect(spy).toHaveBeenCalledWith({
+			type: 'DELETE_TODO',
+			id: todoData.id
+		});
 	})
 });

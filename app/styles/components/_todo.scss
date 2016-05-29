@@ -13,18 +13,18 @@
 	> :first-child {
 		margin-right: 1rem;
 	}
-
-	.del-btn {
+	.todoBtns {
 		position: absolute;
 		right: 10px;
-		top: 20px;
+		bottom: -5px;
 		display: none;
 	}
+	
 
 	&:hover {
 		background: #f0f0f0;
 		
-		.del-btn {
+		.todoBtns {
 			display: inline-block;
 			transition: background .5s ease-in;
 		}

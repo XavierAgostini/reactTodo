@@ -29,7 +29,10 @@ export var todosReducer = (state = [], action) => {
 					text: action.text,
 					completed: false,
 					createdAt: moment().unix(),
-					completedAt: undefined
+					completedAt: undefined,
+					edit: false,
+					edited: false,
+					editedAt: undefined
 				}
 			];
 		case 'TOGGLE_TODO':
@@ -51,13 +54,43 @@ export var todosReducer = (state = [], action) => {
 				...state,
 				...action.todos
 			];
+		case 'EDIT_TODO':
+			return state.map((todo) => {
+				if (todo.id === action.id) {
+					if (action.text.length > 0) {
+						console.log('right part', action.text);
+						return {
+							...todo,
+							edit: !todo.edit,
+							edited: true,
+							editedAt: moment().unix(),
+							text: action.text,
+
+
+						}
+					} else {
+						return {
+							...todo,
+							edit: !todo.edit
+						}
+					}
+				} else {
+					return todo;
+				}
+			});
 		case 'DELETE_TODO':
+			var deleteIndex;
 			state.map((todo) => {
 				if (todo.id === action.id) {
-					state.splice(state.indexOf(todo), 1);
-				} 
+					deleteIndex = state.indexOf(todo);
+				}
 			});
-			return state;
+			var todos = [
+				...state.slice(0,deleteIndex),
+				...state.slice(deleteIndex+1)
+			];
+			return todos;
+
 		default:
 			return state;
 	}
