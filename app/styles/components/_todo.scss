@@ -5,7 +5,8 @@
 	padding: 1rem;
 	position: relative;
 	transition: background .3s ease;
-
+	border-bottom: 1px solid #eeeeee;
+	
 	p, input {
 		margin: 0;
 	}
@@ -28,10 +29,13 @@
 			display: inline-block;
 			transition: background .5s ease-in;
 		}
+		.todo_subtext {
+			display: inline-block;
+		}
 		
 	}
 
-	#testInput {
+	#editInput {
 		border: none;
 		box-shadow: none;
 		background: inherit;
@@ -39,12 +43,13 @@
 
 }
 
-.todo__subtext {
+.todo_subtext {
 	color: #999;
+	display: none;
 }
 
 .todo-completed {
-	p, .todo__subtext {
+	p, .todo_subtext {
 		text-decoration: line-through;
 		color: $light-color;
 	}

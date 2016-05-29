@@ -58,15 +58,12 @@ export var todosReducer = (state = [], action) => {
 			return state.map((todo) => {
 				if (todo.id === action.id) {
 					if (action.text.length > 0) {
-						console.log('right part', action.text);
 						return {
 							...todo,
 							edit: !todo.edit,
 							edited: true,
 							editedAt: moment().unix(),
 							text: action.text,
-
-
 						}
 					} else {
 						return {

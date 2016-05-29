@@ -19,10 +19,9 @@ describe('Todo', () => {
 		};
 		var spy = expect.createSpy();
 		var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>)
-		var $el = $(ReactDOM.findDOMNode(todo));
-
-		TestUtils.Simulate.click($el[0]);
-
+		var checkbox = todo.refs.todoCheckbox;
+		expect(checkbox).toExist();
+		TestUtils.Simulate.click(checkbox);
 		expect(spy).toHaveBeenCalledWith({
 			type: 'TOGGLE_TODO',
 			id: todoData.id
@@ -36,8 +35,7 @@ describe('Todo', () => {
 			completed: true
 		};
 		var spy = expect.createSpy();
-		var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>)
-		var $el = $(ReactDOM.findDOMNode(todo));
+		var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>);
 		
 		expect(todo.refs.delBtn).toExist();
 		TestUtils.Simulate.click(todo.refs.delBtn);
@@ -45,5 +43,23 @@ describe('Todo', () => {
 			type: 'DELETE_TODO',
 			id: todoData.id
 		});
-	})
+	});
+
+	it('Should dispatch editTodo action on clicking todo', () => {
+		var todoData = {
+			id: 100,
+			text: 'Test',
+			completed: true
+		};
+		var spy = expect.createSpy();
+		var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>);
+		var $el = todo.refs.todo;
+		expect($el).toExist();
+		TestUtils.Simulate.click($el);
+		expect(spy).toHaveBeenCalledWith({
+			type: 'EDIT_TODO',
+			id: todoData.id,
+			text: ''
+		});
+	});
 });

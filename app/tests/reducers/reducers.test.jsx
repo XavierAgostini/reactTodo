@@ -99,5 +99,58 @@ describe('Reducers', () => {
 			var res = reducers.todosReducer(todos, df(action));
 			expect(res[0].id).toEqual('2');
 		});
+		
+		it('Should edit selected todo', () => {
+			var todos = [{
+				id: '1',
+				text: 'anything',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000,
+				edit: false,
+				edited: false,
+				editedAt: undefined
+			}, {
+				id: '2',
+				text: 'test2',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000,
+				edit: false,
+				edited: false,
+				editedAt: undefined
+			}, {
+				id: '3',
+				text: 'test3',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000,
+				edit: false,
+				edited: false,
+				editedAt: undefined
+			}];
+			
+			var action1 = {
+				type: 'EDIT_TODO',
+				id: '1',
+				text: ''
+			};
+			var action2 = {
+				type: 'EDIT_TODO',
+				id: '1',
+				text: 'edited text'
+			};
+
+			var res = reducers.todosReducer(todos, df(action1));
+			expect(res[0].id).toEqual('1');
+			expect(res[0].edit).toEqual(true);
+			expect(res[0].edited).toEqual(false);
+			res = reducers.todosReducer(todos, df(action2));
+			expect(res[0].id).toEqual('1');
+			expect(res[0].edit).toEqual(true);
+			expect(res[0].edited).toEqual(true);
+			expect(res[0].text).toEqual('edited text');
+			expect(res[0].editedAt).toNotBe(undefined);
+		});
 	});
 });

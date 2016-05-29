@@ -27,7 +27,7 @@ export var Todo = React.createClass({
 				timestamp = completedAt;
 			}
 			
-			return message + moment.unix(timestamp).format('MMM Do YYYY @ h:mm: a');
+			return message + moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
 		};
 
         var renderTodo = () => {
@@ -40,7 +40,7 @@ export var Todo = React.createClass({
                     dispatch(actions.editTodo(id, editedText));
                 }}><input type="text" ref="editText" defaultValue={text} onBlur={()=> {
                     dispatch(actions.editTodo(id, ''));
-                }}  id="testInput" autofocus />
+                }} autofocus id="editInput"/>
                 </form>
             }
         };
@@ -60,11 +60,11 @@ export var Todo = React.createClass({
             	<div>
             		<input type="checkbox" onClick={() => {
                 dispatch(actions.toggleTodo(id))
-                }} checked={completed}/>
+                }} checked={completed} ref="todoCheckbox"/>
             	</div>
             	<div onClick={() => {
                     dispatch(actions.editTodo(id, ''))
-                }}>
+                }} ref="todo">
                     {renderTodo()}
             		<p className="todo_subtext">{renderDate()}</p>
             	</div>

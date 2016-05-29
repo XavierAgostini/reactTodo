@@ -83,4 +83,24 @@ describe('Actions', () => {
 		var res = actions.deleteTodo(action.id);
 		expect(res).toEqual(action);
 	});
+
+	it('Should generate editTodo action', () => {
+		var todo = {
+			id: '1',
+			text: 'anything',
+			completed: false,
+			completedAt: undefined,
+			createdAt: 33000,
+			edit: false,
+			edited: false,
+			editedAt: undefined
+		};
+		var action = {
+			type: 'EDIT_TODO',
+			id: '1',
+			text: 'todo has been edidted'
+		};
+		var res = actions.editTodo(action.id, action.text);
+		expect(res).toEqual(action);	
+	});
 });
